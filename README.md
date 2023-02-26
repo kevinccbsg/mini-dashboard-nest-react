@@ -1,3 +1,33 @@
+## Ucademy dashboard
+
+In this webpage you can display some use info and create a new one. This repository has a Nestjs API with a MongoDB database and a react SPA page.
+
+### How to execute
+
+To execute this in local you need docker and docker-compose installed. You will have to run these commands.
+
+```bash
+# create basic docker container
+npm run docker
+# provisionate the DB
+npm run db:provisionate
+```
+
+You will also need a `.env` file similar to the `.env.example`.
+
+```
+MONGO_TEST_CONNECTION=mongodb://localhost:27017/ucademy
+MONGO_CONNECTION=mongodb://localhost:27017/ucademy
+NODE_ENV=test
+```
+
+If you want to run the APP you will have to run these commands in separated terminals:
+
+```
+npm run start:frontend
+npm run start:backend
+```
+
 # Prueba técnica
 
 ## Contexto y requerimientos:
