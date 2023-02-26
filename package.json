@@ -6,6 +6,7 @@
     "start:frontend": "nx serve frontend",
     "start:backend": "nx serve backend",
     "build": "nx build",
+    "docker": "docker-compose --file docker-compose.yml up -d --force-recreate",
     "test": "nx test"
   },
   "private": true,
