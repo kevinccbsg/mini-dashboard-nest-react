@@ -1,18 +1,20 @@
 import { Module } from '@nestjs/common';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { DatabaseModule } from './database/database.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { DatabaseService } from './database.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
+    MongooseModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        uri: configService.get<string>('NODE_ENV') === 'test'
+          ? configService.get<string>('MONGO_TEST_CONNECTION')
+          : configService.get<string>('MONGO_CONNECTION')
+      }),
+      inject: [ConfigService]
     }),
-    DatabaseModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  providers: [DatabaseService],
+  exports: [DatabaseService]
 })
-export class AppModule {}
+export class DatabaseModule {}
