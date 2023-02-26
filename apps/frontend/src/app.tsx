@@ -1,8 +1,13 @@
 import AppRoutes from './router';
+import Navbar from './components/Navbar/Navbar';
+import './styles/reset.css';
 
 export function App() {
   return (
-    <AppRoutes />
+    <>
+      <Navbar />
+      <AppRoutes />
+    </>
   );
 }
 
