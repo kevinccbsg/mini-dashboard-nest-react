@@ -28,6 +28,14 @@ npm run start:frontend
 npm run start:backend
 ```
 
+you can check API docs in [http://localhost:3333/api](http://localhost:3333/api).
+
+**Recommended:** If you want to run tests in the API you can execute this command.
+
+```
+npm run test:backend
+```
+
 # Prueba técnica
 
 ## Contexto y requerimientos:
