@@ -1,9 +1,10 @@
 import { Test } from '@nestjs/testing';
 import { Connection } from 'mongoose';
 import * as request from 'supertest';
+import { validate as isValidUUID } from 'uuid';
 import { AppModule } from '../../../app.module';
 import { DatabaseService } from '../../../database/database.service';
-import { userDetail } from '../mocks/user';
+import { userDetail, newUserRequest } from '../mocks/user';
 
 describe('User controller', () => {
   let dbConnection: Connection;
@@ -23,8 +24,11 @@ describe('User controller', () => {
     httpServer = app.getHttpServer();
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await dbConnection.collection(collectionName).deleteMany({});
+  });
+
+  afterAll(async () => {
     await app.close();
   });
 
@@ -44,6 +48,18 @@ describe('User controller', () => {
         pageSize: 2,
         totalPages: 1,
       });
+    });
+  });
+
+  describe('POST /users', () => {
+    it('should create a new user', async () => {
+      const response = await request(httpServer)
+        .post('/users')
+        .send(newUserRequest);
+      expect(response.status).toEqual(201);
+      const users = await dbConnection.collection(collectionName).find({}).toArray();
+      expect(users).toHaveLength(1);
+      expect(isValidUUID(users[0]._id)).toBeTruthy();
     });
   });
 });

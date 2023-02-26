@@ -11,7 +11,10 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async create(createCatDto: CreateUserDto): Promise<User> {
-    const createdCat = new this.userModel(createCatDto);
+    const createdCat = new this.userModel({
+      ...createCatDto,
+      courses: [],
+    });
     return createdCat.save();
   }
 

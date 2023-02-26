@@ -35,3 +35,15 @@ export const userDetail: User = {
   inscriptionDate: '02/06/2022',
   courses: [],
 };
+
+export const newUserRequest = {
+  isOnline: false,
+  name: 'Maurine',
+  avatar:
+    'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/775.jpg',
+  lastName: 'Harber',
+  username: 'Clementine.Boyle',
+  email: 'Dovie_Howell79@gmail.com',
+  phone: '+34 6782 828 121',
+  inscriptionDate: '02/06/2022',
+};
