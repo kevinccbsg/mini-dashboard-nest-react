@@ -1,5 +1,10 @@
-import React from 'react';
+import Table from '../components/Table/Table';
 
-const Users = () => <h1>User page</h1>;
+const Users = () => (
+  <main>
+    <button>Nuevo usuario</button>
+    <Table />
+  </main>
+);
 
 export default Users;
