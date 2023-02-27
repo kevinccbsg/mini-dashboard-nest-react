@@ -1,5 +1,9 @@
 export const COLORS = {
   bg: '#262D34',
+  white: '#FFF',
+  black: '#000',
+  primary: '#0ABB87',
+  secondary: '#262D34',
 };
 
 export const SIZES = {

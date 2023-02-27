@@ -1,8 +1,9 @@
 import Table from '../components/Table/Table';
+import Button from '../components/Button/Button';
 
 const Users = () => (
   <main>
-    <button>Nuevo usuario</button>
+    <Button theme="primary">Nuevo usuario</Button>
     <Table />
   </main>
 );

@@ -1,4 +1,4 @@
-import { Aside, Container, Content } from './Sidebar.styles';
+import { Aside, Container, Content, ListItem, ListIconImage } from './Sidebar.styles';
 
 interface SidebarProps {
   children: React.ReactNode
@@ -13,10 +13,10 @@ const Sidebar = ({ children, items }: SidebarProps) => (
     <Aside>
       <ul>
         {items.map(({ label, logo }) => (
-          <li key={label}>
-            <img src={logo} alt={label} />
+          <ListItem key={label}>
+            <ListIconImage src={logo} alt={label} />
             {label}
-          </li>
+          </ListItem>
         ))}
       </ul>
     </Aside>

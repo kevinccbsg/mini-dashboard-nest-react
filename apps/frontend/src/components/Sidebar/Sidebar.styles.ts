@@ -11,6 +11,16 @@ export const Content = styled.div`
   margin: 35px 30px;
 `;
 
+export const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  padding: 14px;
+`;
+
+export const ListIconImage = styled.img`
+  margin-right: 17px;
+`;
+
 export const Aside = styled.aside`
   position: fixed;
   bottom: 0;
@@ -21,6 +31,7 @@ export const Aside = styled.aside`
   @media ${DEVICES.tablet} {
     position: relative;
     padding: 22px;
+    padding-top: 34px;
     border: none;
   }
 `;

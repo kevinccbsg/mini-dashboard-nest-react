@@ -1,34 +1,58 @@
 import React from 'react';
 import { useTable, Column } from 'react-table';
 
-function Table() {
+const Table = () => {
   const data = React.useMemo(
     () => [
       {
-        col1: 'Hello',
-        col2: 'World',
+        isOnline: 'isOnline',
+        the: 'the',
+        name: 'name',
+        email: 'email',
+        phone: 'phone',
+        icon: 'icon',
       },
       {
-        col1: 'react-table',
-        col2: 'rocks',
+        isOnline: 'isOnline',
+        the: 'the',
+        name: 'name',
+        email: 'email',
+        phone: 'phone',
+        icon: 'icon',
       },
       {
-        col1: 'whatever',
-        col2: 'you want',
+        isOnline: 'isOnline',
+        the: 'the',
+        name: 'name',
+        email: 'email',
+        phone: 'phone',
+        icon: 'icon',
       },
     ],
     []
   );
 
-  const columns = React.useMemo<Column<{col1: string, col2: string}>[]>(
+  const columns = React.useMemo<Column<{ [key: string]: string}>[]>(
     () => [
       {
-        Header: 'Column 1',
-        accessor: 'col1', // accessor is the "key" in the data
+        Header: 'Conexión',
+        accessor: 'isOnline', // accessor is the "key" in the data
       },
       {
-        Header: 'Column 2',
-        accessor: 'col2',
+        Header: 'Nombre y apellidos',
+        accessor: 'name',
+      },
+      {
+        Header: 'email',
+        accessor: 'email',
+      },
+      {
+        Header: 'phone',
+        accessor: 'phone',
+      },
+      {
+        Header: '',
+        accessor: 'icon',
       },
     ],
     []
