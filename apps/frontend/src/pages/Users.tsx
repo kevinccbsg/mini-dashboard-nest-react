@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Table from '../components/Table/Table';
 import Button from '../components/Button/Button';
 import UserModal from './components/UserModal/UserModal';
+import NewUserModal from './components/NewUserModal/NewUserModal';
 import uiStore from '../store/uiStore';
 import userStore from '../store/userStore';
 import { User } from './../store/models/user.model';
@@ -52,6 +53,7 @@ const Users = () => {
         }}
       />
       <UserModal />
+      <NewUserModal />
     </>
   );
 };

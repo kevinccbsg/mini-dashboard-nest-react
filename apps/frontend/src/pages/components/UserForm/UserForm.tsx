@@ -4,11 +4,13 @@ import Button from 'apps/frontend/src/components/Button/Button';
 import { UserSchema } from 'apps/frontend/src/schemas';
 
 interface UserFormProps {
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
   username: string;
   phone: string;
+  hideSubmit?: boolean;
 }
 
 const UserForm = (props: UserFormProps) => {
@@ -28,7 +30,7 @@ const UserForm = (props: UserFormProps) => {
        }}
      >
       {({ handleSubmit, handleChange, handleBlur, values }) => (
-        <FormStyled onSubmit={handleSubmit}>
+        <FormStyled id={props.id} onSubmit={handleSubmit}>
           <DoubleRow>
             <InputContainer width={45}>
               <Label htmlFor="firstName">First Name</Label>
@@ -105,8 +107,9 @@ const UserForm = (props: UserFormProps) => {
               />
             </InputContainer>
           </DoubleRow>
-
-          <Button type="submit">Submit</Button>
+          {!props.hideSubmit && (
+            <Button type="submit" theme="secondary">Submit</Button>
+          )}
         </FormStyled>
       )}
     </Formik>

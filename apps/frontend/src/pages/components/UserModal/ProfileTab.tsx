@@ -3,6 +3,7 @@ import UserProfile from '../../../components/UserProfile/UserProfile';
 import UserForm from '../UserForm/UserForm';
 import Button from '../../../components/Button/Button';
 import userStore from '../../../store/userStore';
+import { ButtonContainer, SubmitButton } from './ProfileTab.styled';
 
 const Users = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
@@ -11,9 +12,11 @@ const Users = () => {
   if (!editMode) {
     return (
       <>
-        <Button theme="primary" onClick={() => setEditMode(true)}>
-          Editar usuario
-        </Button>
+        <ButtonContainer>
+          <Button theme="secondary" onClick={() => setEditMode(true)}>
+            Editar usuario
+          </Button>
+        </ButtonContainer>
         <UserProfile
           email={userSelected.email}
           avatar={userSelected.avatar}
@@ -27,10 +30,15 @@ const Users = () => {
   }
   return (
     <>
-      <Button theme="primary" onClick={() => setEditMode(false)}>
-        cancelar edición
-      </Button>
+      <ButtonContainer>
+        <Button onClick={() => setEditMode(false)}>
+          cancelar edición
+        </Button>
+        <SubmitButton type="submit" form="editUser" onClick={() => setEditMode(true)} />
+      </ButtonContainer>
       <UserForm
+        hideSubmit
+        id="editUser"
         firstName={userSelected.name}
         lastName={userSelected.lastName}
         email={userSelected.email}
