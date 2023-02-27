@@ -20,7 +20,7 @@ export const ModalStyled = styled.div`
   height: 80vh;
   width: 100%;
   max-width: 480px;
-  background: #FFFFFF;
+  background: ${COLORS.white};
   box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   overflow: auto;
