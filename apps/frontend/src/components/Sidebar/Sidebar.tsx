@@ -1,4 +1,4 @@
-import { Aside, Container, Content, ListItem, ListIconImage } from './Sidebar.styles';
+import { Aside, Container, Content, ListItem, ListIconImage } from './Sidebar.styled';
 
 interface SidebarProps {
   children: React.ReactNode

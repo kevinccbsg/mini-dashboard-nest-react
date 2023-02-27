@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { Overlay, ModalStyled } from './Modal.styles';
+import { Overlay, ModalStyled } from './Modal.styled';
 
 interface ModalProps {
   children: React.ReactNode

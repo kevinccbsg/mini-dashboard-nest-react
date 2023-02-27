@@ -46,7 +46,7 @@ export const Progress = styled.nav<ProgressProps>`
   width: 20%;
   height: 100%;
   border-radius: 10px;
-  background: linear-gradient(90deg, #0ABB87 6.77%, #6FD466 93.23%);
+  background: ${COLORS.gradient};
   animation: ${increaseProgressBar} 1.5s forwards;
   ${props => (
     css`

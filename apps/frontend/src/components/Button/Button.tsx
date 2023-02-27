@@ -1,4 +1,4 @@
-import { ButtonStyled } from './Button.styles';
+import { ButtonStyled } from './Button.styled';
 
 interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   children: React.ReactNode

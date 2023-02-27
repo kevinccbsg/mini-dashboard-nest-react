@@ -8,6 +8,7 @@ export const COLORS = {
   inputBorder: '#C9C9C9',
   error: '#FF3333',
   light: '#767676',
+  gradient: 'linear-gradient(90deg, #0ABB87 6.77%, #6FD466 93.23%)',
 };
 
 export const SIZES = {
