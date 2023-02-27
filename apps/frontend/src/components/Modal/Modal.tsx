@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { Overlay, ModalStyled } from './Modal.styles';
 
 interface ModalProps {
   children: React.ReactNode
@@ -10,11 +11,11 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
-    <div className="modal-overlay" onClick={() => onClose()}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+    <Overlay onClick={() => onClose()}>
+      <ModalStyled onClick={(e) => e.stopPropagation()}>
         {children}
-      </div>
-    </div>,
+      </ModalStyled>
+    </Overlay>,
     document.body
   );
 };
