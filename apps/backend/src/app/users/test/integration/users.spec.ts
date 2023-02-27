@@ -60,6 +60,28 @@ describe('User controller', () => {
       const users = await dbConnection.collection(collectionName).find({}).toArray();
       expect(users).toHaveLength(1);
       expect(isValidUUID(users[0]._id)).toBeTruthy();
+      expect(isValidUUID(users[0].isOnline)).toBeFalsy();
+    });
+  });
+
+  describe('PUT /users/:id', () => {
+    it('should update an old user', async () => {
+      await request(httpServer)
+        .post('/users')
+        .send(newUserRequest);
+      let users = await dbConnection.collection(collectionName).find({}).toArray();
+      const insertedUser = users[0];
+      const response = await request(httpServer)
+        .put(`/users/${insertedUser._id}`)
+        .send({
+          name: 'update name',
+          lastName: 'update lastname',
+        });
+      expect(response.status).toEqual(202);
+      users = await dbConnection.collection(collectionName).find({}).toArray();
+      expect(users[0].name).toEqual('update name');
+      expect(users[0].lastName).toEqual('update lastname');
+      expect(users[0].phone).toEqual(newUserRequest.phone);
     });
   });
 });

@@ -1,12 +1,17 @@
-import { Controller, Get, Post, Body, HttpCode, Query, BadRequestException } from '@nestjs/common';
+import {
+  Controller, Get, Post, Body, HttpCode, Query, BadRequestException, Put, Param,
+} from '@nestjs/common';
 import {
   ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserRequestDto } from './dto/create-user-request.dto';
+import { UpdateUserRequestDto } from './dto/update-user-request.dto';
 import { PaginateUser } from './dto/paginate-users.dto';
+import { format } from 'date-fns';
+
 
 @ApiTags('users')
 @Controller('users')
@@ -16,9 +21,23 @@ export class UsersController {
   @Post()
   @ApiOperation({ summary: 'Create user' })
   @HttpCode(201)
-  async create(@Body() createUser: CreateUserDto) {
-    await this.usersService.create(createUser);
+  async create(@Body() createUser: CreateUserRequestDto) {
+    await this.usersService.create({
+      ...createUser,
+      isOnline: false,
+      inscriptionDate: format(new Date(), 'dd/MM/yyyy'),
+      avatar: 'https://i.pravatar.cc/300',
+      courses: [],
+    });
     return { status: 201, data: 'success' };
+  }
+
+  @Put(':id')
+  @ApiOperation({ summary: 'Edit user' })
+  @HttpCode(202)
+  async update(@Param('id') userId: string, @Body() createUser: UpdateUserRequestDto) {
+    await this.usersService.editUser(userId, createUser);
+    return { status: 202, data: 'success' };
   }
 
   @Get()

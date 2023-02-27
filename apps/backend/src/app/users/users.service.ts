@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PaginateUser } from './dto/paginate-users.dto';
-
+import { UpdateUserRequestDto } from './dto/update-user.dto'
 
 @Injectable()
 export class UsersService {
@@ -16,6 +16,10 @@ export class UsersService {
       courses: [],
     });
     return createdCat.save();
+  }
+
+  async editUser(userId: string, payload: UpdateUserRequestDto): Promise<void> {
+    await this.userModel.findOneAndUpdate({ _id: userId }, payload);
   }
 
   async findAll(page: number, pageSize: number): Promise<PaginateUser> {
