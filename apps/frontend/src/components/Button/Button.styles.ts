@@ -26,6 +26,7 @@ export const ButtonStyled = styled.button`
     return css`
       background-color: ${COLORS.white};
       color: ${COLORS.black};
+      border: 1px solid ${COLORS.black};
     `}
   }
   @media ${DEVICES.laptop} { 

@@ -4,7 +4,10 @@ export const COLORS = {
   black: '#000',
   primary: '#0ABB87',
   secondary: '#262D34',
-  border: '#CDCDCD'
+  border: '#CDCDCD',
+  inputBorder: '#C9C9C9',
+  error: '#FF3333',
+  light: '#767676',
 };
 
 export const SIZES = {

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { DEVICES, COLORS } from '../../styles/constants';
 
 export const Image = styled.img`
   border-radius: 50%;
