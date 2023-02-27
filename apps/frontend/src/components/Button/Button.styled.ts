@@ -10,17 +10,24 @@ export const ButtonStyled = styled.button`
   text-decoration: none;
   line-height: inherit;
   padding: 16px 14px;
+  transition: all .3s linear;
   ${props => {
     if (props.theme === 'primary') {
       return css`
         background-color: ${COLORS.primary};
         color: ${COLORS.white};
+        &:hover {
+          background-color: ${COLORS.primaryHover};
+        }
       `
     }
     if (props.theme === 'secondary') {
       return css`
         background-color: ${COLORS.secondary};
         color: ${COLORS.white};
+        &:hover {
+          background-color: ${COLORS.secondaryHover};
+        }
       `
     }
     return css`

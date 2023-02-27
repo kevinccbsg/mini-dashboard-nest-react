@@ -3,6 +3,14 @@ import { InputContainer, Label, Input, FormStyled, DoubleRow, ErrorMessageStyled
 import Button from 'apps/frontend/src/components/Button/Button';
 import { UserSchema } from 'apps/frontend/src/schemas';
 
+interface FormPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  phone: string;
+}
+
 interface UserFormProps {
   id: string;
   firstName: string;
@@ -11,6 +19,7 @@ interface UserFormProps {
   username: string;
   phone: string;
   hideSubmit?: boolean;
+  onSubmit: (payload: FormPayload) => void;
 }
 
 const UserForm = (props: UserFormProps) => {

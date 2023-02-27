@@ -7,7 +7,10 @@ import { ButtonContainer, SubmitButton } from './ProfileTab.styled';
 
 const Users = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
-  const userSelected = userStore(state => state.selectedUser);
+  const [userSelected, editUser] = userStore(state => [
+    state.selectedUser,
+    state.editUser,
+  ]);
   if (!userSelected) return null;
   if (!editMode) {
     return (
@@ -44,6 +47,7 @@ const Users = () => {
         email={userSelected.email}
         username={userSelected.username}
         phone={userSelected.phone}
+        onSubmit={(payload) => editUser(userSelected._id, payload)}
       />
     </>
   );

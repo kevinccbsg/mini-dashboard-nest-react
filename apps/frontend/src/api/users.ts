@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { PaginateUser } from './user.models';
+import { PaginateUser, NewUserRequest, NewUserResponse } from './user.models';
 
 const API_URL = process.env['NX_API_URL'] || 'http://localhost:3333';
 
@@ -8,6 +8,16 @@ const getUsers = async (page: number): Promise<PaginateUser> => {
   return data;
 };
 
+const saveUser = async (payload: NewUserRequest) => (
+  axios.post<NewUserResponse>(`${API_URL}/api/users`, payload)
+);
+
+const editUser = async (id: string, payload: NewUserRequest) => (
+  axios.put<NewUserResponse>(`${API_URL}/api/users/${id}`, payload)
+);
+
 export {
-  getUsers
+  getUsers,
+  saveUser,
+  editUser,
 };

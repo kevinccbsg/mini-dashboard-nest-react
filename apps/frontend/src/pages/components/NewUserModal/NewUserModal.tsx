@@ -5,6 +5,7 @@ import { Header } from './NewUserModal.styled';
 
 const NewUserModal = () => {
   const setSelectedUser = userStore(state => state.setSelectedUser);
+  const saveUser = userStore(state => state.saveUser);
   return (
     <Modal id="new-user-modal" onClose={() => setSelectedUser(null)}>
       <Header>Nuevo usuario</Header>
@@ -15,6 +16,7 @@ const NewUserModal = () => {
         email=""
         username=""
         phone=""
+        onSubmit={saveUser}
       />
     </Modal>
   );

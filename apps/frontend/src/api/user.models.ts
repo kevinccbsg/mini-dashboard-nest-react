@@ -27,7 +27,18 @@ interface PaginationDetails {
 }
 
 export interface PaginateUser {
-  // TODO: improve docs
   data: User[];
   pagination: PaginationDetails;
+}
+
+export interface NewUserResponse {
+  statusCode: number;
+}
+
+export interface NewUserRequest {
+  name: string;
+  lastName: string;
+  username: string;
+  email: string;
+  phone: string;
 }
