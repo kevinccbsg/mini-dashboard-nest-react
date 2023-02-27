@@ -9,6 +9,10 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   margin: 35px 30px;
+  @media ${DEVICES.tablet} {
+    width: 100%;
+    max-width: 1079px;
+  }
 `;
 
 export const ListItem = styled.li`

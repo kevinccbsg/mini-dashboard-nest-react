@@ -1,31 +1,32 @@
 import React from 'react';
 import { useTable, Column } from 'react-table';
+import { TableStyle, Thead, Th, Td, Tr, Container } from './Table.styled';
 
 const Table = () => {
   const data = React.useMemo(
     () => [
       {
-        isOnline: 'isOnline',
-        the: 'the',
-        name: 'name',
-        email: 'email',
-        phone: 'phone',
+        isOnline: 'Offline',
+        name: 'Estudiante 01',
+        username: 'Est01',
+        email: 'estudiante01@gmail.com',
+        phone: '603578200',
         icon: 'icon',
       },
       {
-        isOnline: 'isOnline',
-        the: 'the',
-        name: 'name',
-        email: 'email',
-        phone: 'phone',
+        isOnline: 'Offline',
+        name: 'Estudiante 02',
+        username: 'Est01',
+        email: 'estudiante02@gmail.com',
+        phone: '603578200',
         icon: 'icon',
       },
       {
-        isOnline: 'isOnline',
-        the: 'the',
-        name: 'name',
-        email: 'email',
-        phone: 'phone',
+        isOnline: 'Offline',
+        name: 'Estudiante 03',
+        username: 'Est01',
+        email: 'estudiante03@gmail.com',
+        phone: '603578200',
         icon: 'icon',
       },
     ],
@@ -41,6 +42,10 @@ const Table = () => {
       {
         Header: 'Nombre y apellidos',
         accessor: 'name',
+      },
+      {
+        Header: 'Username',
+        accessor: 'username',
       },
       {
         Header: 'email',
@@ -62,39 +67,41 @@ const Table = () => {
     useTable({ columns, data });
 
   return (
-    <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-              >
-                {column.render('Header')}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                  >
-                    {cell.render('Cell')}
-                  </td>
-                );
-              })}
+    <Container>
+      <TableStyle {...getTableProps()}>
+        <Thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <Th
+                  {...column.getHeaderProps()}
+                >
+                  {column.render('Header')}
+                </Th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </Thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+            return (
+              <Tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <Td
+                      {...cell.getCellProps()}
+                    >
+                      {cell.render('Cell')}
+                    </Td>
+                  );
+                })}
+              </Tr>
+            );
+          })}
+        </tbody>
+      </TableStyle>
+    </Container>
   );
 }
 

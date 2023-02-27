@@ -4,6 +4,7 @@ export const COLORS = {
   black: '#000',
   primary: '#0ABB87',
   secondary: '#262D34',
+  border: '#CDCDCD'
 };
 
 export const SIZES = {
