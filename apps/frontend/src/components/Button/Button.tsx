@@ -5,8 +5,8 @@ interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   theme?: 'primary' | 'secondary'
 }
 
-const Button = ({ children, theme }: ButtonProps) => (
-  <ButtonStyled theme={theme}>
+const Button = ({ children, theme, onClick }: ButtonProps) => (
+  <ButtonStyled theme={theme} onClick={onClick}>
     {children}
   </ButtonStyled>
 );
