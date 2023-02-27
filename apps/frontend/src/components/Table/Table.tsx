@@ -1,15 +1,18 @@
 import React, { ReactNode } from 'react';
-import { useTable, Column } from 'react-table';
+import { useTable, Column, Row } from 'react-table';
 import { TableStyle, Thead, Th, Td, Tr, Container } from './Table.styled';
 
 interface TableProps {
   items: {
     [key: string]: React.ReactNode | string;
-  }[]
-  columnHeaders: readonly Column<{ [key: string]: ReactNode; }>[]
+  }[];
+  columnHeaders: readonly Column<{ [key: string]: ReactNode; }>[];
+  rowClick: (row: Row<{
+    [key: string]: React.ReactNode;
+  }>) => void;
 }
 
-const Table = ({ items, columnHeaders }: TableProps) => {
+const Table = ({ items, columnHeaders, rowClick }: TableProps) => {
   const data = React.useMemo(
     () => items,
     [items]
@@ -48,6 +51,7 @@ const Table = ({ items, columnHeaders }: TableProps) => {
                   return (
                     <Td
                       {...cell.getCellProps()}
+                      onClick={()=> rowClick(row)}
                     >
                       {cell.render('Cell')}
                     </Td>

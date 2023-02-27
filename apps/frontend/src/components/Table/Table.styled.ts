@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS } from '../../styles/constants';
+import { COLORS, DEVICES } from '../../styles/constants';
 
 export const Container = styled.div`
   overflow-x: auto;
@@ -25,5 +25,11 @@ export const Td = styled.th`
 
 export const Tr = styled.tr`
   border-bottom: 1px solid ${COLORS.border};
+  @media ${DEVICES.laptop} { 
+    cursor: pointer;
+    &:hover {
+      background-color: #e8e8e8;
+    }
+  }
 `;
 

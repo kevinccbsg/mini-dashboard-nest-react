@@ -2,9 +2,12 @@ import { useState } from 'react';
 import UserProfile from '../../../components/UserProfile/UserProfile';
 import UserForm from '../UserForm/UserForm';
 import Button from '../../../components/Button/Button';
+import userStore from '../../../store/userStore';
 
 const Users = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
+  const userSelected = userStore(state => state.selectedUser);
+  if (!userSelected) return null;
   if (!editMode) {
     return (
       <>
@@ -12,12 +15,12 @@ const Users = () => {
           Editar usuario
         </Button>
         <UserProfile
-          email="Dovie_Howell79@gmail.com"
-          avatar="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/775.jpg"
-          inscriptionDate="02/06/2022"
-          name="Maurine Harber"
-          phone="+34 6782 828 121"
-          username="Clementine.Boyle"
+          email={userSelected.email}
+          avatar={userSelected.avatar}
+          inscriptionDate={userSelected.inscriptionDate}
+          name={`${userSelected.name} ${userSelected.lastName}`}
+          phone={userSelected.phone}
+          username={userSelected.username}
         />
       </>
     );
@@ -28,11 +31,11 @@ const Users = () => {
         cancelar edición
       </Button>
       <UserForm
-        firstName="Maurine"
-        lastName="Harber"
-        email="Dovie_Howell79@gmail.com"
-        username="Clementine.Boyle"
-        phone="+34 6782 828 121"
+        firstName={userSelected.name}
+        lastName={userSelected.lastName}
+        email={userSelected.email}
+        username={userSelected.username}
+        phone={userSelected.phone}
       />
     </>
   );

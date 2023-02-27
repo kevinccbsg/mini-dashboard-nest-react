@@ -1,12 +1,18 @@
 import { Container, HeaderText, ProgressBar, Progress, Text } from './ProgressInfo.styled';
 
-const ProgressInfo = () => (
+interface ProgressInfoProps {
+  header: string;
+  progress: number;
+  initDate: string;
+}
+
+const ProgressInfo = (props: ProgressInfoProps) => (
   <Container>
-    <HeaderText>Curso 01</HeaderText>
+    <HeaderText>{props.header}</HeaderText>
     <ProgressBar>
-      <Progress maxWidth={20} />
+      <Progress maxWidth={props.progress} />
     </ProgressBar>
-    <Text>Fecha de inscripción: 01-09-2022</Text>
+    <Text>Fecha de inscripción: {props.initDate}</Text>
   </Container>
 );
 

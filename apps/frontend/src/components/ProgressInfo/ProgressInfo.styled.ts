@@ -4,11 +4,11 @@ import { COLORS } from '../../styles/constants';
 export const Container = styled.div`
   width: 100%;
   font-family: 'Montserrat', sans-serif;
+  margin-bottom: 17px;
 `;
 
 export const HeaderText = styled.h3`
   width: 100%;
-  max-width: 80px;
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 7px;

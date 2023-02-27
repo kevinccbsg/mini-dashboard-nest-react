@@ -25,5 +25,4 @@ export const TabButton = styled.button<TabButtonProps>`
   @media ${DEVICES.laptop} { 
     cursor: pointer;
   }
-
 `;
