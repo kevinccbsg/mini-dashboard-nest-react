@@ -5,6 +5,7 @@ import Modal from '../components/Modal/Modal';
 import UserForm from './components/UserForm/UserForm';
 import ProgressInfo from '../components/ProgressInfo/ProgressInfo';
 import Tabs from '../components/Tabs/Tabs';
+import Icon from '../components/Icon/Icon';
 
 const INIT_VALUES = {
   firstName: '',
@@ -14,10 +15,64 @@ const INIT_VALUES = {
   phone: '',
 };
 
+const fakeUsers = [
+  {
+    isOnline: 'Offline',
+    name: 'Estudiante 01',
+    username: 'Est01',
+    email: 'estudiante01@gmail.com',
+    phone: '603578200',
+    icon: <Icon icon='calendar' />,
+  },
+  {
+    isOnline: 'Offline',
+    name: 'Estudiante 02',
+    username: 'Est01',
+    email: 'estudiante02@gmail.com',
+    phone: '603578200',
+    icon: 'icon',
+  },
+  {
+    isOnline: 'Offline',
+    name: 'Estudiante 03',
+    username: 'Est01',
+    email: 'estudiante03@gmail.com',
+    phone: '603578200',
+    icon: 'icon',
+  },
+]
+
+const fakeHeaders = [
+  {
+    Header: 'Conexión',
+    accessor: 'isOnline', // accessor is the "key" in the data
+  },
+  {
+    Header: 'Nombre y apellidos',
+    accessor: 'name',
+  },
+  {
+    Header: 'Username',
+    accessor: 'username',
+  },
+  {
+    Header: 'email',
+    accessor: 'email',
+  },
+  {
+    Header: 'phone',
+    accessor: 'phone',
+  },
+  {
+    Header: '',
+    accessor: 'icon',
+  },
+]
+
 const Users = () => (
   <>
     <Button theme="primary">Nuevo usuario</Button>
-    <Table />
+    <Table items={fakeUsers} columnHeaders={fakeHeaders} />
     <Tabs tabs={
       [{
         label: 'Perfil',

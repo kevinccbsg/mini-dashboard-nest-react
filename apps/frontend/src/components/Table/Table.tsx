@@ -1,66 +1,23 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useTable, Column } from 'react-table';
 import { TableStyle, Thead, Th, Td, Tr, Container } from './Table.styled';
 
-const Table = () => {
+interface TableProps {
+  items: {
+    [key: string]: React.ReactNode | string;
+  }[]
+  columnHeaders: readonly Column<{ [key: string]: ReactNode; }>[]
+}
+
+const Table = ({ items, columnHeaders }: TableProps) => {
   const data = React.useMemo(
-    () => [
-      {
-        isOnline: 'Offline',
-        name: 'Estudiante 01',
-        username: 'Est01',
-        email: 'estudiante01@gmail.com',
-        phone: '603578200',
-        icon: 'icon',
-      },
-      {
-        isOnline: 'Offline',
-        name: 'Estudiante 02',
-        username: 'Est01',
-        email: 'estudiante02@gmail.com',
-        phone: '603578200',
-        icon: 'icon',
-      },
-      {
-        isOnline: 'Offline',
-        name: 'Estudiante 03',
-        username: 'Est01',
-        email: 'estudiante03@gmail.com',
-        phone: '603578200',
-        icon: 'icon',
-      },
-    ],
-    []
+    () => items,
+    [items]
   );
 
-  const columns = React.useMemo<Column<{ [key: string]: string}>[]>(
-    () => [
-      {
-        Header: 'Conexión',
-        accessor: 'isOnline', // accessor is the "key" in the data
-      },
-      {
-        Header: 'Nombre y apellidos',
-        accessor: 'name',
-      },
-      {
-        Header: 'Username',
-        accessor: 'username',
-      },
-      {
-        Header: 'email',
-        accessor: 'email',
-      },
-      {
-        Header: 'phone',
-        accessor: 'phone',
-      },
-      {
-        Header: '',
-        accessor: 'icon',
-      },
-    ],
-    []
+  const columns = React.useMemo<readonly Column<{ [key: string]: ReactNode; }>[]>(
+    () => columnHeaders,
+    [columnHeaders]
   );
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

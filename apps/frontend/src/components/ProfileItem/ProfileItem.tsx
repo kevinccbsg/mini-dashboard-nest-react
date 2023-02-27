@@ -1,5 +1,5 @@
-import { ICONS } from './icons';
-import { Container, Icon, Content, Header, Text, Image } from './ProfileItem.styled';
+import Icon from '../Icon/Icon';
+import { Container, Content, Header, Text } from './ProfileItem.styled';
 
 interface ProfileItemProps {
   header: string;
@@ -10,11 +10,7 @@ interface ProfileItemProps {
 const ProfileItem = (props: ProfileItemProps) => {
   return (
     <Container>
-      <Icon>
-        {props.icon && (
-          <Image src={ICONS[props.icon]} alt="user icon" />
-        )}
-      </Icon>
+      <Icon icon={props.icon} />
       <Content>
         <Header>{props.header}</Header>
         <Text>{props.text}</Text>
