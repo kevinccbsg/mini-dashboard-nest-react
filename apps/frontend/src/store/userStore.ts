@@ -13,6 +13,8 @@ interface UIState {
   selectedUser: User | null;
   paginateUsers: User[];
   currentPage: number;
+  total: number;
+  totalPages: number;
   saveUser: (newUser: UserPayload) => void;
   editUser: (id: string, newUser: UserPayload) => void;
   setSelectedUser: (userEmail: string | null) => void;
@@ -23,6 +25,8 @@ const useUserStore = create<UIState>()((set) => ({
   paginateUsers: [],
   selectedUser: null,
   currentPage: 1,
+  total: 0,
+  totalPages: 0,
   setSelectedUser: (userEmail) => set((state) => ({
     selectedUser: state.paginateUsers.find(user => user.email === userEmail),
   })),
@@ -31,6 +35,8 @@ const useUserStore = create<UIState>()((set) => ({
     set({
       paginateUsers: users.data,
       currentPage: users.pagination.page,
+      total: users.pagination.total,
+      totalPages: users.pagination.totalPages,
     });
   },
   saveUser: async (user) => {

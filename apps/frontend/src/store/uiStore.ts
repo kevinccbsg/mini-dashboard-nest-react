@@ -5,11 +5,11 @@ interface UIState {
   setModal: (value: string | null) => void
 }
 
-const useBearStore = create<UIState>()((set) => ({
+const useUIStore = create<UIState>()((set) => ({
   modalId: null,
   setModal: (value) => set(() => ({
     modalId: value,
   })),
 }))
 
-export default useBearStore;
+export default useUIStore;
