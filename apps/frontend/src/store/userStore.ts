@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { toast } from 'react-toastify';
 import { User } from './models/user.model';
 import { getUsers, saveUser, editUser } from '../api/users';
 
@@ -31,44 +32,78 @@ const useUserStore = create<UIState>()((set) => ({
     selectedUser: state.paginateUsers.find(user => user.email === userEmail),
   })),
   fetchPage: async (page) => {
-    const users = await getUsers(page);
-    set({
-      paginateUsers: users.data,
-      currentPage: users.pagination.page,
-      total: users.pagination.total,
-      totalPages: users.pagination.totalPages,
-    });
+    try {
+      const users = await getUsers(page);
+      set({
+        paginateUsers: users.data,
+        currentPage: users.pagination.page,
+        total: users.pagination.total,
+        totalPages: users.pagination.totalPages,
+      });
+    } catch (error) {
+      toast('Error obteniendo los usuarios', {
+        type: 'error',
+      });
+    }
   },
   saveUser: async (user) => {
-    await saveUser({
-      email: user.email,
-      lastName: user.lastName,
-      name: user.firstName,
-      phone: user.phone,
-      username: user.username,
-    });
-    const users = await getUsers(1);
-    set({
-      paginateUsers: users.data,
-      currentPage: users.pagination.page,
-    });
+    try {
+      await saveUser({
+        email: user.email,
+        lastName: user.lastName,
+        name: user.firstName,
+        phone: user.phone,
+        username: user.username,
+      });
+      const users = await getUsers(1);
+      toast('Usuario guardado', {
+        type: 'success',
+      });
+      set({
+        paginateUsers: users.data,
+        currentPage: users.pagination.page,
+        total: users.pagination.total,
+        totalPages: users.pagination.totalPages,
+      });
+    } catch (error) {
+      toast('Error guardando usuario', {
+        type: 'error',
+      });
+    }
   },
   editUser: async (id, payload) => {
-    await editUser(id, {
-      email: payload.email,
-      lastName: payload.lastName,
-      name: payload.firstName,
-      phone: payload.phone,
-      username: payload.username,
-    });
-    set(state => ({
-      paginateUsers: state.paginateUsers.map(user => {
-        if (user._id === id) {
-          return { ...user, ...payload };
-        }
-        return { ...user };
-      }),
-    }));
+    try {
+      await editUser(id, {
+        email: payload.email,
+        lastName: payload.lastName,
+        name: payload.firstName,
+        phone: payload.phone,
+        username: payload.username,
+      });
+      toast('Usuario editado', {
+        type: 'success',
+      });
+      set(state => ({
+        selectedUser: state.selectedUser ? {
+          ...state.selectedUser,
+          email: payload.email,
+          lastName: payload.lastName,
+          name: payload.firstName,
+          phone: payload.phone,
+          username: payload.username,
+        } : null,
+        paginateUsers: state.paginateUsers.map(user => {
+          if (user._id === id) {
+            return { ...user, ...payload };
+          }
+          return { ...user };
+        }),
+      }));
+    } catch (error) {
+      toast('Error editando usuario', {
+        type: 'error',
+      });
+    }
   },
 }))
 

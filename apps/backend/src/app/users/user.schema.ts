@@ -5,7 +5,7 @@ import { Course } from './entities/User.entity';
 
 @Schema()
 export class User {
-  @Prop({ required: true, default: uuidv4() })
+  @Prop({ required: true, default: () => uuidv4() })
   _id: string;
   @Prop({ required: true })
   isOnline: boolean;
