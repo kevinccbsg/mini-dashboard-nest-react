@@ -6,8 +6,11 @@
     "start:frontend": "nx serve frontend",
     "start:backend": "nx serve backend",
     "test:backend": "nx run backend:test",
-    "e2e:tests": "nx e2e frontend-e2e --watch",
+    "e2e:tests:open": "nx e2e frontend-e2e --watch",
+    "e2e:tests:run": "nx e2e frontend-e2e",
     "build": "nx build",
+    "lint": "nx run backend:lint && nx run frontend:lint",
+    "test:ci": "npm run test:backend && npm run e2e:tests:run",
     "db:provisionate": "node libs/import-local-data.js",
     "docker": "docker-compose --file docker-compose.yml up -d --force-recreate",
     "test": "nx test"

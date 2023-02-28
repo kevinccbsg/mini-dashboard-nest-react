@@ -4,7 +4,7 @@ In this webpage you can display some use info and create a new one. This reposit
 
 ### How to execute
 
-To execute this in local you need docker and docker-compose installed. You will have to run these commands.
+To execute this exercise in your local machine you need [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) installed. You have to run these commands.
 
 ```bash
 # create basic docker container
@@ -28,12 +28,21 @@ npm run start:frontend
 npm run start:backend
 ```
 
-you can check API docs in [http://localhost:3333/api](http://localhost:3333/api).
+you can check API docs in [http://localhost:3333/api](http://localhost:3333/api), and the frontend all in [http://localhost:4200/](http://localhost:4200/).
 
-**Recommended:** If you want to run tests in the API you can execute this command.
+**Recommended:** If you want to run API tests you can execute this command.
 
 ```
 npm run test:backend
+```
+
+**Recommended:** If you want to run frontend tests you can use these commands.
+
+```bash
+# watch mode
+npm run e2e:tests:open
+# headless mode
+npm run e2e:tests:run
 ```
 
 # Prueba técnica

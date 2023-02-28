@@ -54,7 +54,6 @@ const useUserStore = create<UIState>()((set) => ({
     });
   },
   editUser: async (id, payload) => {
-    console.log(id);
     await editUser(id, {
       email: payload.email,
       lastName: payload.lastName,
