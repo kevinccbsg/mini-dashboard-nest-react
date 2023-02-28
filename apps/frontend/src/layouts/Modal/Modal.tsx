@@ -5,7 +5,7 @@ import uiStore from '../../store/uiStore';
 interface ModalProps {
   children: React.ReactNode;
   id: string;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Modal = ({ id, children, onClose }: ModalProps) => {
@@ -21,7 +21,9 @@ const Modal = ({ id, children, onClose }: ModalProps) => {
       <CloseButton
         onClick={() => {
           setModal(null);
-          onClose();
+          if (onClose) {
+            onClose();
+          }
         }}
       >
         Cerrar

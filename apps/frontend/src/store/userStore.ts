@@ -19,7 +19,7 @@ interface UIState {
   fetchPage: (page: number) => void;
 }
 
-const useBearStore = create<UIState>()((set) => ({
+const useUserStore = create<UIState>()((set) => ({
   paginateUsers: [],
   selectedUser: null,
   currentPage: 1,
@@ -48,6 +48,7 @@ const useBearStore = create<UIState>()((set) => ({
     });
   },
   editUser: async (id, payload) => {
+    console.log(id);
     await editUser(id, {
       email: payload.email,
       lastName: payload.lastName,
@@ -66,4 +67,4 @@ const useBearStore = create<UIState>()((set) => ({
   },
 }))
 
-export default useBearStore;
+export default useUserStore;

@@ -7,7 +7,7 @@ interface ProgressInfoProps {
 }
 
 const ProgressInfo = (props: ProgressInfoProps) => (
-  <Container>
+  <Container data-cy="progress-info-bar">
     <HeaderText>{props.header}</HeaderText>
     <ProgressBar>
       <Progress maxWidth={props.progress} />

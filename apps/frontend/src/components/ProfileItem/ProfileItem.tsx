@@ -11,7 +11,7 @@ const ProfileItem = (props: ProfileItemProps) => {
   return (
     <Container>
       <Icon icon={props.icon} />
-      <Content>
+      <Content data-cy="profile-content">
         <Header>{props.header}</Header>
         <Text>{props.text}</Text>
       </Content>

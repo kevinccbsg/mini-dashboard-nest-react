@@ -38,11 +38,13 @@ const Users = () => {
     <>
       <Button
         theme="primary"
+        dataCy="new-user-button"
         onClick={() => setModal('new-user-modal')}
       >
         Nuevo usuario
       </Button>
       <Table
+        id="users"
         items={buildRows(paginateUsers)}
         columnHeaders={TABLE_HEADERS}
         rowClick={row => {

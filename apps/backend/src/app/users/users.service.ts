@@ -26,7 +26,7 @@ export class UsersService {
     const skips = pageSize * (page - 1);
     const total = await this.userModel.countDocuments();
     const data = await this.userModel.find()
-      .select({ _id: 0, __v: 0 })
+      .select({ __v: 0 })
       .skip(skips)
       .limit(pageSize)
       .exec();

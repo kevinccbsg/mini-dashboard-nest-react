@@ -16,7 +16,11 @@ const Users = () => {
     return (
       <>
         <ButtonContainer>
-          <Button theme="secondary" onClick={() => setEditMode(true)}>
+          <Button
+            theme="secondary"
+            dataCy="profile-edit-user"
+            onClick={() => setEditMode(true)}
+          >
             Editar usuario
           </Button>
         </ButtonContainer>
@@ -34,10 +38,14 @@ const Users = () => {
   return (
     <>
       <ButtonContainer>
-        <Button onClick={() => setEditMode(false)}>
+        <Button onClick={() => setEditMode(false)} dataCy="profile-cancel-edit">
           cancelar edición
         </Button>
-        <SubmitButton type="submit" form="editUser" onClick={() => setEditMode(true)} />
+        <SubmitButton
+          data-cy="profile-submit-edit-user"
+          type="submit"
+          form="editUser"
+        />
       </ButtonContainer>
       <UserForm
         hideSubmit
@@ -47,7 +55,10 @@ const Users = () => {
         email={userSelected.email}
         username={userSelected.username}
         phone={userSelected.phone}
-        onSubmit={(payload) => editUser(userSelected._id, payload)}
+        onSubmit={(payload) => {
+          editUser(userSelected._id, payload);
+          setEditMode(false);
+        }}
       />
     </>
   );

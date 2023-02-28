@@ -1,19 +1,20 @@
 import { Aside, Container, Content, ListItem, ListIconImage } from './Sidebar.styled';
 
 interface SidebarProps {
-  children: React.ReactNode
+  children: React.ReactNode;
   items: {
-    logo: string,
-    label: string,
-  }[]
+    id: string;
+    logo: string;
+    label: string;
+  }[];
 }
 
 const Sidebar = ({ children, items }: SidebarProps) => (
   <Container>
     <Aside>
       <ul>
-        {items.map(({ label, logo }) => (
-          <ListItem key={label}>
+        {items.map(({ id, label, logo }) => (
+          <ListItem key={id} data-cy={`${id}-menu`}>
             <ListIconImage src={logo} alt={label} />
             {label}
           </ListItem>

@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import { InputContainer, Label, Input, FormStyled, DoubleRow, ErrorMessageStyled } from './UserForm.styled';
-import Button from 'apps/frontend/src/components/Button/Button';
-import { UserSchema } from 'apps/frontend/src/schemas';
+import Button from '../../../components/Button/Button';
+import { UserSchema } from '../../../schemas';
 
 interface FormPayload {
   firstName: string;
@@ -25,18 +25,17 @@ interface UserFormProps {
 const UserForm = (props: UserFormProps) => {
   return (
     <Formik
-       initialValues={{
+      initialValues={{
         firstName: props.firstName,
         lastName: props.lastName,
         email: props.email,
         username: props.username,
         phone: props.phone,
       }}
-       validationSchema={UserSchema}
-       onSubmit={values => {
-         // same shape as initial values
-         console.log(values);
-       }}
+      validationSchema={UserSchema}
+      onSubmit={values => {
+        props.onSubmit(values);
+      }}
      >
       {({ handleSubmit, handleChange, handleBlur, values }) => (
         <FormStyled id={props.id} onSubmit={handleSubmit}>
@@ -47,6 +46,7 @@ const UserForm = (props: UserFormProps) => {
                 id="firstName"
                 name="firstName"
                 type="text"
+                data-cy="user-form-firstName"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.firstName}
@@ -61,6 +61,7 @@ const UserForm = (props: UserFormProps) => {
                 id="lastName"
                 name="lastName"
                 type="text"
+                data-cy="user-form-lastName"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.lastName}
@@ -77,6 +78,7 @@ const UserForm = (props: UserFormProps) => {
               id="email"
               name="email"
               type="email"
+              data-cy="user-form-email"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
@@ -92,6 +94,7 @@ const UserForm = (props: UserFormProps) => {
               id="username"
               name="username"
               type="username"
+              data-cy="user-form-username"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.username}
@@ -107,6 +110,7 @@ const UserForm = (props: UserFormProps) => {
                 id="phone"
                 name="phone"
                 type="phone"
+                data-cy="user-form-phone"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.phone}
@@ -117,7 +121,13 @@ const UserForm = (props: UserFormProps) => {
             </InputContainer>
           </DoubleRow>
           {!props.hideSubmit && (
-            <Button type="submit" theme="secondary">Submit</Button>
+            <Button
+              type="submit"
+              theme="secondary"
+              dataCy="user-form-submit"
+            >
+              Submit
+            </Button>
           )}
         </FormStyled>
       )}

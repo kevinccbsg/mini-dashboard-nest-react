@@ -1,13 +1,14 @@
 import Modal from '../../../layouts/Modal/Modal';
 import userStore from '../../../store/userStore';
+import uiStore from '../../../store/uiStore';
 import UserForm from '../UserForm/UserForm';
 import { Header } from './NewUserModal.styled';
 
 const NewUserModal = () => {
-  const setSelectedUser = userStore(state => state.setSelectedUser);
+  const setModal = uiStore(state => state.setModal);
   const saveUser = userStore(state => state.saveUser);
   return (
-    <Modal id="new-user-modal" onClose={() => setSelectedUser(null)}>
+    <Modal id="new-user-modal">
       <Header>Nuevo usuario</Header>
       <UserForm
         id="newUserform"
@@ -16,7 +17,10 @@ const NewUserModal = () => {
         email=""
         username=""
         phone=""
-        onSubmit={saveUser}
+        onSubmit={(payload) => {
+          saveUser(payload);
+          setModal(null);
+        }}
       />
     </Modal>
   );

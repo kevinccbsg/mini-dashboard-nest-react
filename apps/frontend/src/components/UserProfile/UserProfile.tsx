@@ -13,7 +13,7 @@ interface UserProfileProps {
 const UserProfile = (props: UserProfileProps) => (
   <div>
     <ImageContainer>
-      <Image src={props.avatar} alt={props.name} />
+      <Image src={props.avatar} alt={props.name} data-cy="profile-image" />
     </ImageContainer>
     <ProfileItem
       header="Nombre y apellidos"

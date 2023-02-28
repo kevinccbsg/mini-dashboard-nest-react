@@ -3,6 +3,7 @@ import { useTable, Column, Row } from 'react-table';
 import { TableStyle, Thead, Th, Td, Tr, Container } from './Table.styled';
 
 interface TableProps {
+  id: string;
   items: {
     [key: string]: React.ReactNode | string;
   }[];
@@ -12,7 +13,7 @@ interface TableProps {
   }>) => void;
 }
 
-const Table = ({ items, columnHeaders, rowClick }: TableProps) => {
+const Table = ({ id, items, columnHeaders, rowClick }: TableProps) => {
   const data = React.useMemo(
     () => items,
     [items]
@@ -46,7 +47,7 @@ const Table = ({ items, columnHeaders, rowClick }: TableProps) => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <Tr {...row.getRowProps()}>
+              <Tr {...row.getRowProps()} data-cy={`${id}-table-row`}>
                 {row.cells.map((cell) => {
                   return (
                     <Td

@@ -19,6 +19,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
         {tabs.map((tab, index) => (
           <TabButton
             key={tab.label}
+            data-cy={`tab-${index}`}
             onClick={() => setActiveTab(index)}
             selected={index === activeTab}
           >

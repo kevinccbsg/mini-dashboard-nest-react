@@ -1,4 +1,4 @@
-import { COLORS } from 'apps/frontend/src/styles/constants';
+import { COLORS } from '../../../styles/constants';
 import styled from 'styled-components';
 
 export const ButtonContainer = styled.div`

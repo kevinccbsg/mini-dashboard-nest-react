@@ -3,7 +3,7 @@ import logo from '../../assets/logo.svg';
 
 const Navbar = () => (
   <NavbarStyled>
-    <Logo src={logo} alt="ucademy logo" />
+    <Logo src={logo} alt="ucademy logo" data-cy="brand-logo" />
   </NavbarStyled>
 );
 
