@@ -9,11 +9,19 @@ describe('frontend', () => {
     cy.wait('@userList');
   });
 
-  it('should display home page with the table and 10 users', () => {
+  it('should display home page with 10 users and we can paginate', () => {
     cy.get('[data-cy=brand-logo]').should('be.visible');
     cy.get('[data-cy=dashboard-menu]').should('be.visible');
     cy.get('[data-cy=new-user-button]').should('be.visible');
     cy.get('[data-cy=users-table-row]').should('have.length', 10);
+    cy.get('[data-cy=paginate-next-button]').should('be.visible');
+    cy.get('[data-cy=paginate-prev-button]').should('not.exist');
+    cy.intercept('GET', `${API_URL}/api/users?page=2&pageSize=10`, {
+      fixture: 'usersPage2.json',
+    }).as('userListPage2');
+    cy.get('[data-cy=paginate-next-button]').click();
+    cy.wait('@userListPage2');
+    cy.get('[data-cy=paginate-prev-button]').should('be.visible');
   });
 
   it('should interact with all the modals, create and edit a user', () => {
@@ -43,7 +51,7 @@ describe('frontend', () => {
     cy.get('[data-cy=user-form-firstName]').should('not.exist');
   });
 
-  it.only('should edit one user in the table and see its courses', () => {
+  it('should edit one user in the table and see its courses', () => {
     const userPayload = {
       username: 'testuser',
       name: 'prueba',

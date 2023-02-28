@@ -22,6 +22,7 @@ const Paginate: React.FC<Props> = ({
       {!(currentPage === 1) && (
         <ListItem>
           <Button
+            dataCy="paginate-prev-button"
             onClick={() => handlePrevPageClick(currentPage - 1)}
           >
             Prev
@@ -31,6 +32,7 @@ const Paginate: React.FC<Props> = ({
       {!(currentPage === totalPages) && (
         <ListItem>
           <Button
+            dataCy="paginate-next-button"
             disabled={currentPage === totalPages}
             onClick={() => handleNextPageClick(currentPage + 1)}
           >
