@@ -1,10 +1,11 @@
 import ProgressInfo from '../../../components/ProgressInfo/ProgressInfo';
 import userStore from '../../../store/userStore';
+import { Container } from './CoursesTab.styled';
 
 const CoursesTab = () => {
   const userSelected = userStore(state => state.selectedUser);
   return (
-    <div>
+    <Container>
       {userSelected?.courses.map(course => (
         <ProgressInfo
           key={course._id}
@@ -13,7 +14,7 @@ const CoursesTab = () => {
           initDate={course.inscriptionDate}
         />
       ))}
-    </div>
+    </Container>
   );
 };
 

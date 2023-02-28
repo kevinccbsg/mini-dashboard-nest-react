@@ -4,21 +4,23 @@ In this webpage you can display some use info and create a new one. This reposit
 
 ### How to execute
 
-To execute this exercise in your local machine you need [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) installed. You have to run these commands.
+To execute this exercise in your local machine you need [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) installed. 
+
+You need a `.env` file similar to the `.env.example`.
+
+```
+MONGO_TEST_CONNECTION=mongodb://localhost:27017/ucademy
+MONGO_CONNECTION=mongodb://localhost:27017/ucademy
+NODE_ENV=test
+```
+
+And you have to run these commands.
 
 ```bash
 # create basic docker container
 npm run docker
 # provisionate the DB
 npm run db:provisionate
-```
-
-You will also need a `.env` file similar to the `.env.example`.
-
-```
-MONGO_TEST_CONNECTION=mongodb://localhost:27017/ucademy
-MONGO_CONNECTION=mongodb://localhost:27017/ucademy
-NODE_ENV=test
 ```
 
 If you want to run the APP you will have to run these commands in separated terminals:
@@ -28,7 +30,7 @@ npm run start:frontend
 npm run start:backend
 ```
 
-you can check API docs in [http://localhost:3333/api](http://localhost:3333/api), and the frontend all in [http://localhost:4200/](http://localhost:4200/).
+you can check API docs in [http://localhost:3333/api](http://localhost:3333/api), and the frontend (responsive) in [http://localhost:4200/](http://localhost:4200/).
 
 **Recommended:** If you want to run API tests you can execute this command.
 
@@ -44,6 +46,12 @@ npm run e2e:tests:open
 # headless mode
 npm run e2e:tests:run
 ```
+
+## Future development
+
+1. Add CI/CD script to execute tests and deploy application.
+2. Improve frontend handling errors using [react-tostify](https://github.com/fkhadra/react-toastify);
+3. Include more test scenarios in the API and the frontend.
 
 # Prueba técnica
 
