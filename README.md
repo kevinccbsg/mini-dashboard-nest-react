@@ -54,15 +54,6 @@ npm run e2e:tests:run
 3. Include more test scenarios in the API and the frontend.
 4. Add intl with [i18next](https://www.i18next.com/).
 
-# Some App/API screenshots
-
-![ucademy api](https://raw.githubusercontent.com/kevinccbsg/mini-dashboard-nest-react/main/images/backend_swagger.png "ucademy api")
-![page_desktop](https://raw.githubusercontent.com/kevinccbsg/mini-dashboard-nest-react/main/images/page_desktop.png "page_desktop")
-![page_desktop_new_user](https://raw.githubusercontent.com/kevinccbsg/mini-dashboard-nest-react/main/images/page_desktop_new_user.png "page_desktop_new_user")
-![page_desktop_profile](https://raw.githubusercontent.com/kevinccbsg/mini-dashboard-nest-react/main/images/page_desktop_profile.png "page_desktop_profile")
-![mobile_version](https://raw.githubusercontent.com/kevinccbsg/mini-dashboard-nest-react/main/images/mobile_version.png "mobile_version")
-![mobile_version_profile](https://raw.githubusercontent.com/kevinccbsg/mini-dashboard-nest-react/main/images/mobile_version_profile.png "mobile_version_profile")
-
 # Prueba técnica
 
 ## Contexto y requerimientos:
