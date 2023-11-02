@@ -94,6 +94,4 @@ el frontend.
 
 PD: El objetivo de la prueba es simplemente valorar las desiciones que toma el candidato a la hora de realizar la implementación. Hay muchas soluciones válidas a lo que aquí se plantea.
 
-Happy hacking! 
-:D
 
